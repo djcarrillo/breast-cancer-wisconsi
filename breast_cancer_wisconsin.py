@@ -5,7 +5,8 @@ import numpy as np
 import json
 
 from fastapi import FastAPI
-from prediction import predictions
+#from prediction import predictions
+from prediction import predictions_
 
 app = FastAPI()
 
@@ -27,7 +28,7 @@ def eco(mirror: str):
 
 @app.post(routes.PREDICTION)
 def prediction(data):
-    result = predictions(patient=json.loads(data))
+    result = predictions_(patient=json.loads(data))
 
     return 'El paciente tiene Cancer' if result==4 else 'El paciente esta sano'  # json.dumps({
 
